@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+</head>
+
+<body>
+
+    <h2>The Stored Data</h2>
+    <div id="dvcontainer"></div>
+
+    <script>
+        // const data = JSON.parse(localStorage.getItem('User Data'));
+        // var datacount = localStorage.length;
+        // document.write(datacount);
+        function loadData() {
+                var render = "<table border='1'>";
+                render += "<tr><th>Username</th><th>Email</th><th>Phone</th><th>Password</th></tr>";
+                var person = localStorage.getItem("User Data"); //Get Data from Key
+                var data = JSON.parse(person); //Parse the Data back into the object
+                
+                for (i = 0; i < data.length; i++) {
+                    // console.log(person);
+                    // console.log(data);    
+
+                    render += "<tr><td>" + data[i].Username + "</td><td>" + data[i].Email + "</td>";
+                    render += "<td>" + data[i].Phone + "</td>";
+                    render += "<td>" + data[i].Password+ "</td>";
+                }
+                render += "</table>";
+                dvcontainer.innerHTML = render;
+            }
+        loadData();
+    </script>
+</body>
+
+</html>
