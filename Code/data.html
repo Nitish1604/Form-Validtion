@@ -10,6 +10,7 @@
     <include src="index.html"></include>
     <h2>The Stored Data</h2>
     <div id="dvcontainer"></div>
+	<!--<div><button onclick=saveData(index) id="save" hidden>Save</div>-->
 
     <script>
       // const data = JSON.parse(localStorage.getItem('User Data'));
@@ -22,21 +23,6 @@
         var person = localStorage.getItem("User Data"); //Get Data from Key
         var data = JSON.parse(person); //Parse the Data back into the object
 
-        // for (i = 0; i < data.length; i++) {
-        //   // console.log(person);
-        //   // console.log(data);
-
-        //   render +=
-        //     "<tr><td id = 'username'>" +
-        //     data[i].Username +
-        //     "</td><td id = 'email'>" +
-        //     data[i].Email +
-        //     "</td>";
-        //   render += "<td id = 'phone'>" + data[i].Phone + "</td>";
-        //   render += "<td id = 'password'>" + data[i].Password + "</td>";
-        //   render +=
-        //     "<td><button onclick='editItem(`${i}`)'>Edit</button> <button onclick  = 'deleteItem(`${i}`)'>Delete</button> <button onclick  = 'saveData(`${i}`)'>Save</button></td>";
-        // }
         data.forEach(function (element, index) {
           render +=
             "<tr><td id = 'username'>" +
@@ -49,15 +35,16 @@
           render +=
             "<td><button onclick='editItem(" +
             index +
-            ")' id='edit'>Edit</button> <button onclick  = 'saveData(" +
-            index +
-            ")' id = 'save' hidden>Save</button> <button onclick  = 'deleteItem(" +
-            index +
+            ")'>Edit</button> <button onclick = 'saveData("+ index +")' hidden>Save</button> <button onclick  = 'deleteItem(" +
+			index +
             ")'>Delete</button></td>";
         });
+		//<button onclick  = 'saveData(" +index +")' id = 'save' hidden>Save</button>
+		
         render += "</table>";
         dvcontainer.innerHTML = render;
       }
+	  
       function deleteItem(i) {
         // console.log("Hello");
         // console.log(i);
@@ -72,15 +59,20 @@
       function editItem(i) {
         //Get contents off cell clicked
         let cell = document.getElementById("userData").rows[i + 1].cells;
+		let data = JSON.parse(localStorage.getItem("User Data"));
+		let username = data[i].Username,
+			email = data[i].Email,
+			phone = data[i].Phone,
+			password = data[i].Password;
         cell[0].innerHTML =
-          "<input type = 'text' name = 'txtNewInput' id ='newUsername' value = 'neel' />";
+          "<input type = 'text' name = 'txtNewInput' id ='newUsername' value = '"+ username +"' />";
         cell[1].innerHTML =
-          "<input type = 'text' name = 'txtNewInput' id ='newEmail' value= ''/>";
+          "<input type = 'text' name = 'txtNewInput' id ='newEmail' value= '"+ email +"'/>";
         cell[2].innerHTML =
-          "<input type = 'text' name = 'txtNewInput' id ='newPhone' value= ''/>";
+          "<input type = 'text' name = 'txtNewInput' id ='newPhone' value= '"+ phone +"'/>";
         cell[3].innerHTML =
-          "<input type = 'text' name = 'txtNewInput' id ='newPassword' value= ''/>";
-        document.getElementById("edit").style.display = "none";
+          "<input type = 'text' name = 'txtNewInput' id ='newPassword' value= '"+ password +"'/>";
+        document.getElementsByName("edit").style.display = "none";
         document.getElementById("save").style.display = "block";
       }
 
