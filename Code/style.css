@@ -133,15 +133,6 @@ body {
     background: linear-gradient(to left, #74ebd5, #9face6) ;
 }
 
-ul{
-  list-style:none;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  justify-content:center;
-  width:25vw;
-  margin-top: 20px;
-}
-
 ul li{
   padding:1em 2em .8em 2em;
   border:1px solid black;
