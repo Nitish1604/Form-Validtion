@@ -1,4 +1,4 @@
-		const form = document.getElementById("form");
+	const form = document.getElementById("form");
         const username = document.getElementById("username");
         const email = document.getElementById("email");
         const phone = document.getElementById("phone");
@@ -11,15 +11,15 @@
             validate();
         })
 		
-		const sendData = (usernameVal, sRate, count) => {
-			if(sRate === count){
-				alert('Registration Successful');
-				swal("Welcome! " + usernameVal, "Registration Successful");
-				addData();
-			}
+	const sendData = (usernameVal, sRate, count) => {
+		if(sRate === count){
+			alert('Registration Successful');
+			swal("Welcome! " + usernameVal, "Registration Successful");
+			addData();
 		}
+	}
 		
-		let users = [];
+	let users = [];
         const addData = () => {
        
         let userData = {
@@ -34,22 +34,22 @@
         window.open('data.html', '_blank');
        }
 		
-		//For Final Validation
-		const successMsg = (usernameVal) => {
-			let formCon = document.getElementsByClassName('form-control');
-			var count = formCon.length - 1;
-			for(var i=0; i<formCon.length; i++) {
-				if(formCon[i].className === 'form-control success') {
-					var sRate= 0+i;
-					console.log(sRate);
-					sendData(usernameVal, sRate, count);
-				}else {
-					return false;
-				}
+	//For Final Validation
+	const successMsg = (usernameVal) => {
+		let formCon = document.getElementsByClassName('form-control');
+		var count = formCon.length - 1;
+		for(var i=0; i<formCon.length; i++) {
+			if(formCon[i].className === 'form-control success') {
+				var sRate= 0+i;
+				console.log(sRate);
+				sendData(usernameVal, sRate, count);
+			}else {
+				return false;
 			}
 		}
+	}
 		
-		const isEmail = (emailVal) => {
+	const isEmail = (emailVal) => {
             var atSymbol = emailVal.indexOf("@");
             if(atSymbol < 1) return false;
             var dot = emailVal.lastIndexOf('.');
@@ -107,7 +107,7 @@
             }else {
                 setSuccessMsg(cpassword);
             }
-			successMsg(usernameVal);
+		successMsg(usernameVal);
         }
           
         function setErrorMsg(input, errormsgs) {
